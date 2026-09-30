@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c-bg: #fafafa;
+  --c-bg2: #f0f0f0;
+  --c-bg3: #e5e5e5;
+  --c-ink: #0a0a0a;
+  --c-ink2: #3a3a3a;
+  --c-ink3: #6b6b6b;
+  --c-accent: #0e7490;
+  --c-accent2: #059669;
+  --c-accent3: #d97706;
+  --c-rule: #d4d4d4;
+  --c-rule2: #a3a3a3;
+  --c-onaccent: #ffffff;
+}
+
+.dark {
+  --c-bg: #0a0a0a;
+  --c-bg2: #141414;
+  --c-bg3: #1f1f1f;
+  --c-ink: #fafafa;
+  --c-ink2: #d4d4d4;
+  --c-ink3: #8a8a8a;
+  --c-accent: #22d3ee;
+  --c-accent2: #34d399;
+  --c-accent3: #fbbf24;
+  --c-rule: #2a2a2a;
+  --c-rule2: #404040;
+  --c-onaccent: #0a0a0a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-accent text-onaccent;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+  .pill {
+    @apply inline-flex items-center rounded-full border border-rule px-2.5 py-0.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink3;
+  }
+  .pill-accent {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-accent;
+    background-color: color-mix(in oklab, var(--c-accent) 10%, transparent);
+  }
+  .card {
+    @apply rounded-2xl border border-rule bg-bg2 p-4 sm:p-6 transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-xl;
+    &:hover {
+      border-color: color-mix(in oklab, var(--c-accent) 50%, var(--c-rule));
+    }
+  }
+  .t-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.14em] text-ink3;
+  }
+  .t-h2 {
+    @apply font-display text-2xl sm:text-3xl font-bold tracking-[-0.02em];
+  }
+  .t-h3 {
+    @apply font-display text-lg font-semibold;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-onaccent transition-all hover:opacity-90;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-xl border border-rule2 px-5 py-2.5 text-sm font-semibold text-ink transition-all hover:border-accent hover:text-accent;
+  }
+  .section {
+    @apply mt-16 sm:mt-20;
+  }
+  .glow {
+    pointer-events: none;
+    position: absolute;
+    inset-inline: 0;
+    top: -8rem;
+    height: 60vh;
+    background: radial-gradient(45% at 68% 26%, color-mix(in oklab, var(--c-accent) 18%, transparent), transparent 70%);
+  }
+}
